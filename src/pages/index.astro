@@ -4,6 +4,7 @@ import SinglePane from "../layouts/SinglePane.astro";
 import HeaderNavBar from "../components/HeaderNavBar.astro";
 import fs from "fs";
 
+
 const curriculums = fs.readdirSync("src/content/academic");
 ---
 
@@ -14,7 +15,9 @@ const curriculums = fs.readdirSync("src/content/academic");
 		<h1>Welcome to ACSdemy</h1>
 		
 		<ul>
-		{curriculums.map(curriculum => (<li><a href={`${curriculum.toLowerCase().replace(" ", "-")}/`}>{curriculum}</a></li>))}
+		{curriculums.map(curriculum => (
+			<li><a href={`${curriculum.toLowerCase().replace(" ", "-")}/`}>{curriculum}</a></li>
+		))}
 		</ul>
 	</SinglePane>
 </Boilerplate>

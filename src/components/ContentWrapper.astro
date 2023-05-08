@@ -1,22 +1,15 @@
----
-const { chapter } = Astro.props;
-const { Content } = await chapter.render();
----
-
-<div id="chapter-wrapper">
-    <Content />
+<div id="content-wrapper">
+    <slot/>
 </div>
 
 <style lang="scss">
 
-    #chapter-wrapper {
-
+    #content-wrapper {
         :global( h1 ) {
             color: var(--heading-color);
             font-family: "Harmonia Sans";
             font-size: 56px;
             margin-top: -10px;
-            margin-bottom: 42px;
         }
 
         :global( h2 ) {
@@ -28,13 +21,6 @@ const { Content } = await chapter.render();
         }
 
         :global( h1 + h2 ) { margin-top: 42px }
-        
-        :global( h3 ) {
-            color: var(--heading-color); 
-            font-family: "Harmonia Sans";
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
 
         :global( p ) {
             color: var(--text-color);
@@ -44,7 +30,8 @@ const { Content } = await chapter.render();
             a { color: var(--highlight-color) }
         }
 
-        :global( p + p ) { margin-bottom: 8px }
+        :global( p + p ) { margin-top: 8px }
+        :global( h1 + p ) { margin-top: 42px }
     }
 
 </style>

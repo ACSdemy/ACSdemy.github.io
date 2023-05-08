@@ -4,9 +4,10 @@ import DualPane from "../../../layouts/DualPane.astro";
 import HeaderNavBar from "../../../components/HeaderNavBar.astro";
 import ChapterMenu from "../../../components/ChapterMenu.astro";
 import SideMenuWrapper from "../../../components/SideMenuWrapper.astro";
-import ChapterContentWrapper from "../../../components/ChapterContentWrapper.astro";
+import ContentWrapper from "../../../components/ContentWrapper.astro";
 import { getCollection } from "astro:content";
 import fs from "node:fs";
+
 
 export async function getStaticPaths() {
     let paths = [];
@@ -40,16 +41,21 @@ export async function getStaticPaths() {
 }
 
 const { curriculum, subject, chapter } = Astro.props;
+const { Content } = await chapter.render();
 ---
 
 <Boilerplate title={subject}>
     <HeaderNavBar slugPrefix={"../"} leftTags={[ curriculum, subject ]} />
 
     <DualPane>
+
         <SideMenuWrapper slot="aside">
             <ChapterMenu slugPrefix={"../"} curriculum={curriculum} subject={subject} />
         </SideMenuWrapper>
 
-        <ChapterContentWrapper chapter={chapter} slot="main" />
+        <ContentWrapper slot="main">
+            <Content/>
+        </ContentWrapper>
+        
     </DualPane>
 </Boilerplate>
