@@ -1,0 +1,60 @@
+<div id="aside-menu-wrapper">
+    <slot />
+</div>
+
+<style lang="scss">
+
+    #aside-menu-wrapper {
+
+        :global( h3 ) {
+            color: var(--yellow-heading-color);
+            font-family: "Harmonia Sans";
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+
+        :global( a ) {
+            color: var(--yellow-background-color);
+            font-family: "Akkurat";
+            font-size: 17px;
+            padding-left: 12px;
+        }
+        
+        :global( a:hover ) { color: var(--yellow-text-color) }
+
+        :global( ol ) { counter-reset: topic }
+
+        :global( ol > .topic ) {
+            counter-increment: topic;
+            list-style: none;
+
+            margin-bottom: 15px;
+        }
+
+        :global( ol ol ) {
+            counter-reset: chapter;
+            list-style: none;
+
+            display: grid;
+            grid-template-columns: min-content auto;
+        }
+
+        :global( ol ol > .chapter ) {
+            counter-increment: chapter;
+
+            display: grid;
+            grid-column: 1/-1;
+            grid-template-columns: subgrid;
+
+            align-items: baseline;
+        }
+
+        :global( ol ol > .chapter::before ) {
+            content: counter(topic) "." counter(chapter);
+            color: var(--yellow-background-color);
+            font-family: "Akkurat Mono";
+            font-size: 15px;
+        }
+    }
+
+</style>

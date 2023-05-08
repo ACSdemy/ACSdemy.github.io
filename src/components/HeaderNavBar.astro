@@ -1,0 +1,65 @@
+---
+const { slugPrefix, leftTags, rightTabs } = Astro.props;
+
+let left = [];
+if (leftTags != null && leftTags.length > 0) {
+
+    if (slugPrefix == null) {
+        for (let i = 0; i < leftTags.length - 1; i++) left.push({ slug: ("../".repeat(leftTags.length-1-i)), tag: leftTags[i] });
+        left.push({ slug: "./", tag: leftTags[leftTags.length-1] });
+        
+    } else {
+        for (let i = 0; i < leftTags.length - 1; i++) left.push({ slug: (slugPrefix + "../".repeat(leftTags.length-1-i)), tag: leftTags[i] });
+        left.push({ slug: slugPrefix, tag: leftTags[leftTags.length-1] });
+    }
+} 
+---
+
+<header>
+    <div id="left"><a href="/">Home</a>{left.map(tab => (
+        <p>/</p><a href={tab.slug}>{tab.tag}</a>
+    ))}</div>
+
+    {(rightTabs != null) && (rightTabs.length > 0) && <div id="right">{rightTabs.map(tab => (
+        <a href={`${tab.slug}/`}>{tab.tag}</a>
+    ))}</div>}
+</header>
+<div id="spacer" />
+
+<style>
+
+    #spacer {
+        height: 51px;
+    }
+
+    header {
+        width: 100vw;
+        height: fit-content;
+        position: fixed;
+        display: flex;
+    }
+
+    #left {
+        padding: 12px 20px 14px;
+        margin-right: auto;
+        display: flex;
+    }
+
+    #right {
+        padding: 12px 20px 14px;
+        margin-left: auto;
+
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+    }
+
+    p, a {
+        font-family: "Akkurat";
+        font-size: 20px;
+        color: var(--secondary-background-color);
+    }
+
+    a { padding: 0 20px }
+
+</style>

@@ -1,0 +1,16 @@
+---
+import Boilerplate from "../layouts/Boilerplate.astro";
+import SinglePane from "../layouts/SinglePane.astro";
+import HeaderNavBar from "../components/HeaderNavBar.astro";
+---
+
+<Boilerplate title="About">
+	<HeaderNavBar rightTabs={[{ slug: "/about", tag: "About" }, { slug: "/contribute", tag: "Contribute" }]} />
+
+    <SinglePane>
+        <h1>About</h1>
+        <p>
+            This website is a CAS project developped by a team of 4 students. It is a virtual repository of study notes made by the student body, for the student body.
+        </p>
+    </SinglePane>
+</Boilerplate>

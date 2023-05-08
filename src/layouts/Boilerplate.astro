@@ -1,0 +1,83 @@
+---
+const { title } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+    </head>
+
+    <body>
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+
+    * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        text-decoration: none;
+    }
+
+    
+    body { background-color: var(--primary-background-color) }
+    main { background-color: var(--primary-background-color) }
+    aside { background-color: var(--secondary-background-color) }
+    header { background-color: var(--highlight-color) }
+
+
+    :root {
+        --primary-background-color: #0f0f20;
+        --secondary-background-color: #141529;
+        --heading-color: #d4d4d9;
+        --text-color: #898c8e;
+        --highlight-color: #ffc24c;
+
+        --red-background-color: #a13342;
+        --red-heading-color: #ff6169;
+        --red-text-color: #ffb8bc;
+
+        --yellow-background-color: #a17c3d;
+        --yellow-heading-color: #ffc34c;
+        --yellow-text-color: #ffde9e;
+
+        --green-background-color: #4c7d5c;
+        --green-heading-color: #5ceb74;
+        --green-text-color: #b2f5bc;
+
+        --blue-background-color: #43667b;
+        --blue-heading-color: #7bc9e5;
+        --blue-text-color: #c4e6f3;
+
+        --purple-background-color: #683e7f;
+        --purple-heading-color: #d57ff5;
+        --purple-text-color: #ebc2fa;
+    }
+
+    @font-face {
+        font-family: "Akkurat";
+        src: url("/fonts/Akkurat.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Akkurat Mono";
+        src: url("/fonts/Akkurat-Mono.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "Harmonia Sans";
+        src: url("/fonts/Harmonia-Sans-Bold.ttf") format("truetype");
+        font-weight: bold;
+        font-style: normal;
+    }
+
+</style>

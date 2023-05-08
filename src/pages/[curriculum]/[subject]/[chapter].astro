@@ -1,0 +1,55 @@
+---
+import Boilerplate from "../../../layouts/Boilerplate.astro";
+import DualPane from "../../../layouts/DualPane.astro";
+import HeaderNavBar from "../../../components/HeaderNavBar.astro";
+import ChapterMenu from "../../../components/ChapterMenu.astro";
+import SideMenuWrapper from "../../../components/SideMenuWrapper.astro";
+import ChapterContentWrapper from "../../../components/ChapterContentWrapper.astro";
+import { getCollection } from "astro:content";
+import fs from "node:fs";
+
+export async function getStaticPaths() {
+    let paths = [];
+    const curriculums = fs.readdirSync("src/content/academic");
+
+    for (let i = 0; i < curriculums.length; i++) {
+        const subjects = fs.readdirSync(`src/content/academic/${curriculums[i]}`);
+
+        for (let j = 0; j < subjects.length; j++) {
+            const curriculum = curriculums[i].toLowerCase().replace(" ", "-");
+            const subject = subjects[j].toLowerCase().replace(" ", "-");
+
+            const chapters = await getCollection("academic", ({ slug, data }) => {
+                return slug.startsWith(`${curriculum}/${subject}/`) && data.chapter > 0;
+            });
+            
+            for (let k = 0; k < chapters.length; k++) {
+                paths.push({
+                    params: {
+                        curriculum: curriculum,
+                        subject: subject,
+                        chapter: `${chapters[k].data.topic}.${chapters[k].data.chapter}`
+                    },
+                    props: { curriculum: curriculums[i], subject: subjects[j], chapter: chapters[k] }
+                });
+            }
+        }
+    }
+
+    return paths;
+}
+
+const { curriculum, subject, chapter } = Astro.props;
+---
+
+<Boilerplate title={subject}>
+    <HeaderNavBar slugPrefix={"../"} leftTags={[ curriculum, subject ]} />
+
+    <DualPane>
+        <SideMenuWrapper slot="aside">
+            <ChapterMenu slugPrefix={"../"} curriculum={curriculum} subject={subject} />
+        </SideMenuWrapper>
+
+        <ChapterContentWrapper chapter={chapter} slot="main" />
+    </DualPane>
+</Boilerplate>

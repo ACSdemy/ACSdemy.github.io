@@ -1,0 +1,40 @@
+---
+import Boilerplate from "../../layouts/Boilerplate.astro";
+import SinglePane from "../../layouts/SinglePane.astro";
+import HeaderNavBar from "../../components/HeaderNavBar.astro";
+import ChapterMenu from "../../components/ChapterMenu.astro";
+import fs from "node:fs";
+
+export function getStaticPaths() {
+    let paths = [];
+    const curriculums = fs.readdirSync("src/content/academic");
+
+    for (let i = 0; i < curriculums.length; i++) {
+        const subjects = fs.readdirSync(`src/content/academic/${curriculums[i]}`);
+
+        for (let j = 0; j < subjects.length; j++) {
+            const curriculum = curriculums[i].toLowerCase().replace(" ", "-");
+            const subject = subjects[j].toLowerCase().replace(" ", "-");
+            
+            paths.push({
+                params: { curriculum: curriculum, subject: subject },
+                props: { curriculum: curriculums[i], subject: subjects[j] }
+            });
+        }
+    }
+
+    return paths;
+}
+
+const { curriculum, subject } = Astro.props;
+---
+
+<Boilerplate title={subject}>
+    <HeaderNavBar leftTags={[ curriculum, subject ]} />
+
+    <SinglePane>
+        <h1>{subject}</h1>
+
+        <ChapterMenu curriculum={curriculum} subject={subject} />
+    </SinglePane>
+</Boilerplate>

@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+
+const { slugPrefix, curriculum, subject } = Astro.props;
+
+let menu = [];
+const topics = await getCollection("academic", ({ id, data }) => {
+    return id.startsWith(`${curriculum}/${subject}/`) && data.chapter == 0;
+});
+
+for (let i = 0; i < topics.length; i++) {
+    let chapterList = [];
+    const chapters = await getCollection("academic", ({ id, data }) => {
+        return id.startsWith(`${curriculum}/${subject}/`) && data.topic == topics[i].data.topic && data.chapter > 0;
+    });
+
+    for (let j = 0; j < chapters.length; j++) {
+        chapterList.push({
+            id: chapters[j].data.chapter,
+            title: chapters[j].data.title,
+        });
+    }
+
+    menu.push({
+        id: topics[i].data.topic,
+        title: topics[i].data.title,
+        chapters: chapterList
+    });
+}
+---
+
+<ol>
+    {menu.map(topic => (
+        <li class="topic">
+            <h3>{topic.title.toUpperCase()}</h3>
+            <ol>{topic.chapters.map(chapter => (
+                <li class="chapter"><a href={`${slugPrefix || ""}${topic.id}.${chapter.id}/`}>{chapter.title}</a></li>
+            ))}</ol>
+        </li>
+    ))}
+</ol>

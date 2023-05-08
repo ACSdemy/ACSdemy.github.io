@@ -1,0 +1,45 @@
+<div id="tinfoil-hat">
+    <div id="left-spacer" />
+    <div id="center">
+        <aside>
+            <slot name="aside"/>
+        </aside>
+
+        <main>
+            <slot name="main"/>
+        </main>
+    </div>
+    <div id="right-spacer" />
+</div>
+
+<style>
+
+    #tinfoil-hat {
+        width: 100vw;
+        min-height: calc(100vh - 51px);
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: stretch;
+    }
+
+    #left-spacer { background-color: var(--secondary-background-color) }
+
+    #center {
+        display: flex;
+        flex-direction: row;
+    }
+
+    aside, main { --padding-value: 48px; }
+
+    aside {
+        width: fit-content;
+        padding: var(--padding-value);
+    }
+
+    main {
+        width: 1080px;
+        padding: var(--padding-value) var(--padding-value) 0;
+        margin-bottom: 160px;
+    }
+
+</style>
