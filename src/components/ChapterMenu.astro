@@ -33,8 +33,9 @@ for (let i = 0; i < topics.length; i++) {
 <ol>
     {menu.map(topic => (
         <li class="topic">
-            <h3>{topic.title.toUpperCase()}</h3>
+            <h3><span id="topic-index">TOPIC {topic.id}: </span>{topic.title.toUpperCase()}</h3>
             <ol>{topic.chapters.map(chapter => (
+                <p id="chapter-index">{topic.id}.{chapter.id}</p>
                 <li class="chapter"><a href={`${slugPrefix || ""}${topic.id}.${chapter.id}/`}>{chapter.title}</a></li>
             ))}</ol>
         </li>

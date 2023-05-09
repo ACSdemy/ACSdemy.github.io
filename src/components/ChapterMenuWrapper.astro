@@ -7,58 +7,41 @@
         padding-top: 42px;
 
         :global( h3 ) {
-            color: var(--highlight-color);
+            color: var(--yellow-heading-color);
             font-family: "Harmonia Sans";
             font-size: 28px;
             margin-bottom: 16px;
+
+            :global( #topic-index ) { color: var(--red-heading-color) }
         }
 
         :global( a ) {
             color: var(--heading-color);
             font-family: "Akkurat";
             font-size: 22px;
-            padding-left: 15px;
         }
 
 
-        :global( ol ) { counter-reset: topic }
+        :global( ol ) { list-style: none }
 
-        :global( ol > .topic ) {
-            counter-increment: topic;
-            list-style: none;
-
-            margin-bottom: 32px;
-        }
-
-        :global( .topic > h3::before ) {
-            content: "TOPIC " counter(topic) ": ";
-            color: var(--red-heading-color);
-        }
+        :global( ol > .topic ) { margin-bottom: 32px }
 
         :global( ol ol ) {
-            counter-reset: chapter;
-            list-style: none;
-
             display: grid;
             grid-template-columns: min-content auto;
-        }
-
-        :global( ol ol > .chapter ) {
-            counter-increment: chapter;
-
-            display: grid;
-            grid-column: 1/-1;
-            grid-template-columns: subgrid;
-
             align-items: baseline;
         }
 
-        :global( ol ol > .chapter::before ) {
-            content: counter(topic) "." counter(chapter);
+        :global( ol ol > #chapter-index ) {
+            grid-column: 1;
+
             color: var(--heading-color);
             font-family: "Akkurat Mono";
             font-size: 20px;
+            padding-right: 15px;
         }
+
+        :global( ol ol > .chapter ) { grid-column: 2 }
     }
 
 </style>

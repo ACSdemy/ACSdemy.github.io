@@ -15,44 +15,31 @@
             color: var(--heading-color);
             font-family: "Akkurat";
             font-size: 17px;
-            padding-left: 12px;
         }
         
         :global( a:hover ) { color: var(--yellow-heading-color) }
 
-        :global( ol ) { counter-reset: topic }
 
-        :global( ol > .topic ) {
-            counter-increment: topic;
-            list-style: none;
+        :global( ol ) { list-style: none }
 
-            margin-bottom: 15px;
-        }
+        :global( ol > .topic ) { margin-bottom: 15px }
 
         :global( ol ol ) {
-            counter-reset: chapter;
-            list-style: none;
-
             display: grid;
             grid-template-columns: min-content auto;
-        }
-
-        :global( ol ol > .chapter ) {
-            counter-increment: chapter;
-
-            display: grid;
-            grid-column: 1/-1;
-            grid-template-columns: subgrid;
-
             align-items: baseline;
         }
 
-        :global( ol ol > .chapter::before ) {
-            content: counter(topic) "." counter(chapter);
+        :global( ol ol > #chapter-index ) {
+            grid-column: 1;
+
             color: var(--heading-color);
             font-family: "Akkurat Mono";
             font-size: 16px;
+            padding-right: 12px;
         }
+
+        :global( ol ol > .chapter ) { grid-column: 2 } 
     }
 
 </style>
