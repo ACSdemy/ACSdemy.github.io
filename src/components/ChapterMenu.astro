@@ -16,10 +16,10 @@ for (let i = 0; i < topics.length; i++) {
     });
 
     for (let j = 0; j < chapters.length; j++) {
-        chapterList.push({
+        chapterList[chapters[j].data.chapter] = {
             id: chapters[j].data.chapter,
-            title: chapters[j].data.title,
-        });
+            title: chapters[j].data.title
+        };
     }
 
     menu.push({
@@ -27,15 +27,36 @@ for (let i = 0; i < topics.length; i++) {
         title: topics[i].data.title,
         chapters: chapterList
     });
+
+    menu.sort((a, b) => {
+        const idA = a.id;
+        const idB = b.id;
+        const isNumberA = typeof idA === "number";
+        const isNumberB = typeof idB === "number";
+
+        if (isNumberA && isNumberB) {
+            return idA - idB;
+        } else if (isNumberA && !isNumberB) {
+            return -1;
+        } else if (!isNumberA && isNumberB) {
+            return 1;
+        } else {
+            return idA.localeCompare(idB);
+        }
+    });
 }
 ---
 
 <ol>
     {menu.map(topic => (
         <li class="topic">
-            <h3><span id="topic-index">TOPIC {topic.id}: </span>{topic.title.toUpperCase()}</h3>
+            <h3>
+                <span id="topic-index">{typeof topic.id === "number" && Number.isInteger(topic.id) ? "TOPIC" : "OPTION"} {topic.id}: </span>
+                {topic.title.toUpperCase()}
+            </h3>
+
             <ol>{topic.chapters.map(chapter => (
-                <p id="chapter-index">{topic.id}.{chapter.id}</p>
+                <p id="chapter-index">{topic.id}{typeof topic.id === "number" ? "." : "-"}{chapter.id}</p>
                 <li class="chapter"><a href={`${slugPrefix || ""}${topic.id}.${chapter.id}/`}>{chapter.title}</a></li>
             ))}</ol>
         </li>
