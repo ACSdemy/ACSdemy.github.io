@@ -2,6 +2,7 @@
 import Boilerplate from "../layouts/Boilerplate.astro";
 import SinglePane from "../layouts/SinglePane.astro";
 import HeaderNavBar from "../components/HeaderNavBar.astro";
+import ContentWrapper from "../components/ContentWrapper.astro";
 import fs from "node:fs";
 
 
@@ -31,7 +32,7 @@ const { curriculum, subjects } = Astro.props;
   <HeaderNavBar leftTags={[ curriculum ]} />
 
   <SinglePane>
-    <h1>{curriculum}</h1>
+    <ContentWrapper><h1>{curriculum}</h1></ContentWrapper>
 
     <ul>
     {subjects.map(subject => (

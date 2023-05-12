@@ -2,6 +2,7 @@
 import Boilerplate from "../layouts/Boilerplate.astro";
 import SinglePane from "../layouts/SinglePane.astro";
 import HeaderNavBar from "../components/HeaderNavBar.astro";
+import ContentWrapper from "../components/ContentWrapper.astro";
 import fs from "fs";
 
 
@@ -12,7 +13,7 @@ const curriculums = fs.readdirSync("src/content/academic");
 	<HeaderNavBar rightTabs={[{ slug: "/about", tag: "About" }, { slug: "/contribute", tag: "Contribute" }]} />
 	
 	<SinglePane>
-		<h1>Welcome to ACSdemy</h1>
+		<ContentWrapper><h1>Welcome to ACSdemy</h1></ContentWrapper>
 		
 		<ul>
 		{curriculums.map(curriculum => (
