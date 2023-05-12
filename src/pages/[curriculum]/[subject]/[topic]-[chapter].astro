@@ -29,7 +29,8 @@ export async function getStaticPaths() {
                     params: {
                         curriculum: curriculum,
                         subject: subject,
-                        chapter: `${chapters[k].data.topic}${typeof chapters[k].data.topic === "number" ? "." : "-"}${chapters[k].data.chapter}`
+                        topic: chapters[k].data.topic,
+                        chapter: chapters[k].data.chapter
                     },
                     props: { curriculum: curriculums[i], subject: subjects[j], chapter: chapters[k] }
                 });

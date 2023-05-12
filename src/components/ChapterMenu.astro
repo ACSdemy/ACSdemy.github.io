@@ -14,14 +14,15 @@ for (let i = 0; i < topics.length; i++) {
 
     let chapterList = [];
     const chapters = await getCollection("academic", ({ id, data }) => {
-        return id.startsWith(`${curriculum}/${subject}/`) && data.topic == topics[i].data.topic && data.chapter > 0;
+        return id.startsWith(`${curriculum}/${subject}/`) && data.topic == topicData.topic && data.chapter > 0;
     });
 
     for (let j = 0; j < chapters.length; j++) {
         const chapterData = chapters[j].data;
 
-        chapterList[chapterData.chapter] = {
-            slug: `${topicData.topic}${typeof topicData.topic === "number" ? "." : "-"}${chapterData.chapter}`,
+        chapterList[chapterData.chapter - 1] = {
+            slug: `${topicData.topic}-${chapterData.chapter}`,
+            label: `${topicData.topic}${typeof topicData.topic === "number" ? "." : "-"}${chapterData.chapter}`,
             title: chapterData.title
         };
     }
@@ -32,24 +33,24 @@ for (let i = 0; i < topics.length; i++) {
         title: topicData.title,
         chapters: chapterList
     });
+
+    menu.sort((a, b) => {
+        const idA = a.id;
+        const idB = b.id;
+        const isNumberA = typeof idA === "number";
+        const isNumberB = typeof idB === "number";
+
+        if (isNumberA && isNumberB) {
+            return idA - idB;
+        } else if (isNumberA && !isNumberB) {
+            return -1;
+        } else if (!isNumberA && isNumberB) {
+            return 1;
+        } else {
+            return idA.localeCompare(idB);
+        }
+    });
 }
-
-menu.sort((a, b) => {
-    const idA = a.id;
-    const idB = b.id;
-    const isNumberA = typeof idA === "number";
-    const isNumberB = typeof idB === "number";
-
-    if (isNumberA && isNumberB) {
-        return idA - idB;
-    } else if (isNumberA && !isNumberB) {
-        return -1;
-    } else if (!isNumberA && isNumberB) {
-        return 1;
-    } else {
-        return idA.localeCompare(idB);
-    }
-});
 ---
 
 <ol>
@@ -61,7 +62,7 @@ menu.sort((a, b) => {
             </h3>
 
             <ol>{topic.chapters.map(chapter => (
-                <p id="chapter-index">{chapter.slug}</p>
+                <p id="chapter-index">{chapter.label}</p>
                 <li class="chapter"><a href={`${slugPrefix || ""}${chapter.slug}/`}>{chapter.title}</a></li>
             ))}</ol>
         </li>
