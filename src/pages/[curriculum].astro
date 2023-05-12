@@ -15,7 +15,10 @@ export function getStaticPaths() {
 
     paths.push({
       params: { curriculum: curriculum },
-      props: { curriculum: curriculums[i], subjects: subjects }});
+      props: {
+        curriculum: curriculums[i],
+        subjects: subjects.map(subject => ({ slug: `${subject.toLowerCase().replace(" ", "-")}/`, title: subject }))
+      }});
   }
 
   return paths;
@@ -32,7 +35,7 @@ const { curriculum, subjects } = Astro.props;
 
     <ul>
     {subjects.map(subject => (
-      <li><a href={`${subject.toLowerCase().replace(" ", "-")}/`}>{subject}</a></li>
+      <li><a href={subject.slug}>{subject.title}</a></li>
     ))}
     </ul>
   </SinglePane>
