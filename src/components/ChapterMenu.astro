@@ -10,54 +10,59 @@ const topics = await getCollection("academic", ({ id, data }) => {
 });
 
 for (let i = 0; i < topics.length; i++) {
+    const topicData = topics[i].data;
+
     let chapterList = [];
     const chapters = await getCollection("academic", ({ id, data }) => {
         return id.startsWith(`${curriculum}/${subject}/`) && data.topic == topics[i].data.topic && data.chapter > 0;
     });
 
     for (let j = 0; j < chapters.length; j++) {
-        chapterList[chapters[j].data.chapter] = {
-            id: chapters[j].data.chapter,
-            title: chapters[j].data.title
+        const chapterData = chapters[j].data;
+
+        chapterList[chapterData.chapter] = {
+            slug: `${topicData.topic}${typeof topicData.topic === "number" ? "." : "-"}${chapterData.chapter}`,
+            title: chapterData.title
         };
     }
 
     menu.push({
-        id: topics[i].data.topic,
-        title: topics[i].data.title,
+        id: topicData.topic,
+        label: `${typeof topicData.topic === "number" && Number.isInteger(topicData.topic) ? "TOPIC" : "OPTION"} ${topicData.topic}`,
+        title: topicData.title,
         chapters: chapterList
     });
-
-    menu.sort((a, b) => {
-        const idA = a.id;
-        const idB = b.id;
-        const isNumberA = typeof idA === "number";
-        const isNumberB = typeof idB === "number";
-
-        if (isNumberA && isNumberB) {
-            return idA - idB;
-        } else if (isNumberA && !isNumberB) {
-            return -1;
-        } else if (!isNumberA && isNumberB) {
-            return 1;
-        } else {
-            return idA.localeCompare(idB);
-        }
-    });
 }
+
+menu.sort((a, b) => {
+    const idA = a.id;
+    const idB = b.id;
+    const isNumberA = typeof idA === "number";
+    const isNumberB = typeof idB === "number";
+
+    if (isNumberA && isNumberB) {
+        return idA - idB;
+    } else if (isNumberA && !isNumberB) {
+        return -1;
+    } else if (!isNumberA && isNumberB) {
+        return 1;
+    } else {
+        return idA.localeCompare(idB);
+    }
+});
 ---
 
 <ol>
     {menu.map(topic => (
         <li class="topic">
             <h3>
-                <span id="topic-index">{typeof topic.id === "number" && Number.isInteger(topic.id) ? "TOPIC" : "OPTION"} {topic.id}: </span>
+                <span id="topic-index">{topic.label}: </span>
                 {topic.title.toUpperCase()}
             </h3>
 
             <ol>{topic.chapters.map(chapter => (
-                <p id="chapter-index">{topic.id}{typeof topic.id === "number" ? "." : "-"}{chapter.id}</p>
-                <li class="chapter"><a href={`${slugPrefix || ""}${topic.id}.${chapter.id}/`}>{chapter.title}</a></li>
+                <p id="chapter-index">{chapter.slug}</p>
+                <li class="chapter"><a href={`${slugPrefix || ""}${chapter.slug}}/`}>{chapter.title}</a></li>
             ))}</ol>
         </li>
     ))}
