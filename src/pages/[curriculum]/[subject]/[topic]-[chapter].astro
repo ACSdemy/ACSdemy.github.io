@@ -46,12 +46,12 @@ const { Content } = await chapter.render();
 ---
 
 <Boilerplate title={subject}>
-    <HeaderNavBar slugPrefix={"../"} leftTags={[ curriculum, subject ]} />
+    <HeaderNavBar leftTags={[ curriculum, subject ]} />
 
     <DualPane>
 
         <SideMenuWrapper slot="aside">
-            <ChapterMenu slugPrefix={"../"} curriculum={curriculum} subject={subject} />
+            <ChapterMenu curriculum={curriculum} subject={subject} />
         </SideMenuWrapper>
 
         <ContentWrapper slot="main">
