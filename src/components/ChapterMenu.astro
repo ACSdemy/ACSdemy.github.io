@@ -33,24 +33,24 @@ for (let i = 0; i < topics.length; i++) {
         title: topicData.title,
         chapters: chapterList
     });
-
-    menu.sort((a, b) => {
-        const idA = a.id;
-        const idB = b.id;
-        const isNumberA = typeof idA === "number";
-        const isNumberB = typeof idB === "number";
-
-        if (isNumberA && isNumberB) {
-            return idA - idB;
-        } else if (isNumberA && !isNumberB) {
-            return -1;
-        } else if (!isNumberA && isNumberB) {
-            return 1;
-        } else {
-            return idA.localeCompare(idB);
-        }
-    });
 }
+
+menu.sort((a, b) => {
+    const idA = a.id;
+    const idB = b.id;
+    const isNumberA = typeof idA === "number";
+    const isNumberB = typeof idB === "number";
+
+    if (isNumberA && isNumberB) {
+        return idA - idB;
+    } else if (isNumberA && !isNumberB) {
+        return -1;
+    } else if (!isNumberA && isNumberB) {
+        return 1;
+    } else {
+        return idA.localeCompare(idB);
+    }
+});
 ---
 
 <ol>
