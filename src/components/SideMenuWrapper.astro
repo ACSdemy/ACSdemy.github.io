@@ -14,35 +14,34 @@
             margin-bottom: 3px;
         }
 
-        :global( a ) {
-            color: var(--heading-color);
-            font-family: "Akkurat";
-            font-size: 17px;
-        }
-        
-        :global( a:hover ) { color: var(--yellow-heading-color) }
-
 
         :global( ol ) { list-style: none }
 
-        :global( ol > .topic ) { margin-bottom: 15px }
-
         :global( ol ol ) {
             display: grid;
-            grid-template-columns: min-content auto;
+            grid-template-columns: max-content auto;
             align-items: baseline;
         }
 
-        :global( ol ol > #chapter-index ) {
+        :global( .topic ) { margin-bottom: 15px }
+        :global( .chapter ) { display: contents }
+        :global( .chapter > * ) { color: var(--heading-color) }
+        :global( .chapter:hover > * ) { color: var(--yellow-heading-color) }
+
+        :global( #chapter-index ) {
             grid-column: 1;
 
-            color: var(--heading-color);
             font-family: "Akkurat Mono";
-            font-size: 16px;
+            font-size: 15.6px;
             padding-right: 12px;
         }
 
-        :global( ol ol > .chapter ) { grid-column: 2 } 
+        :global( #chapter-title ) {
+            grid-column: 2;
+
+            font-family: "Akkurat";
+            font-size: 17px;
+        }
     }
 
 </style>
