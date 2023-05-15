@@ -7,14 +7,6 @@
         width: max-content;
         max-width: 420px;
 
-        :global( h3 ) {
-            color: var(--heading-color);
-            font-family: "Harmonia Sans";
-            font-size: 18px;
-            margin-bottom: 3px;
-        }
-
-
         :global( ol ) { list-style: none }
 
         :global( ol ol ) {
@@ -27,6 +19,14 @@
         :global( .chapter ) { display: contents }
         :global( .chapter > * ) { color: var(--heading-color) }
         :global( .chapter:hover > * ) { color: var(--yellow-heading-color) }
+
+
+        :global( h3 ) {
+            color: var(--heading-color);
+            font-family: "Harmonia Sans";
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
 
         :global( #chapter-index ) {
             grid-column: 1;
