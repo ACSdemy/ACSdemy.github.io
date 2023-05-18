@@ -17,7 +17,7 @@ if (leftTags != null && leftTags.length > 0) {
 
 <header>
     <div id="left"><a href="/">Home</a>{left.map(tab => (
-        <p>/</p><a href={tab.slug}>{tab.tag}</a>
+        <p>{">"}</p><a href={tab.slug}>{tab.tag}</a>
     ))}</div>
 
     {(rightTabs != null) && (rightTabs.length > 0) && <div id="right">{rightTabs.map(tab => (
