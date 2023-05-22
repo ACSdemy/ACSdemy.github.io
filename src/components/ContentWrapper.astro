@@ -1,10 +1,10 @@
 <div id="content-wrapper"><slot/></div>
 
-<style lang="scss">
+<style lang="scss" is:global>
 
     #content-wrapper {
         
-        :global( h1 ) {
+        h1 {
             color: var(--heading-color);
             font-family: "Harmonia Sans";
             font-size: 56px;
@@ -12,7 +12,7 @@
             margin-bottom: 42px;
         }
 
-        :global( h2 ) {
+        h2 {
             color: var(--heading-color);
             font-family: "Harmonia Sans";
             font-size: 34px;
@@ -20,9 +20,9 @@
             margin-bottom: 18px;
         }
 
-        :global( h1 + h2 ) { margin-top: 42px }
+        h1 + h2 { margin-top: 42px }
 
-        :global( p ) {
+        p {
             color: var(--text-color);
             font-family: "Akkurat";
             font-size: 18px;
