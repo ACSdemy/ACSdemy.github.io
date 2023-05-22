@@ -1,0 +1,13 @@
+<div class="card"><slot /></div>
+
+<style lang="scss">
+
+    .card {
+        background-color: var(--red-background-color);
+        border-left: 6px solid var(--red-heading-color);
+
+        :global( h3 ) { color: var(--red-heading-color) }
+        :global( p ) { color: var(--red-text-color) }
+    }
+
+</style>

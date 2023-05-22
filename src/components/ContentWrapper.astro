@@ -2,7 +2,7 @@
 
 <style lang="scss">
 
-    #content-wrapper {
+    #content-wrapper > :global( article ) {
         
         & > :global( h1 ) {
             color: var(--heading-color);
@@ -33,19 +33,20 @@
 
 
         & > :global( .card ) {
-            padding: 12px 24px;
+            padding: 12px 24px 18px;
             margin-top: 18px;
-            border-left: 8px solid;
 
-            & > h3 {
+            & > :global( h3 ) {
                 font-family: "Harmonia Sans";
-                font-size: 24px;
+                font-size: 20px;
             }
 
-            & > p {
-                margin-top: 8px;
+            & > :global( p ) {
+                margin-top: 4px;
                 font-family: "Akkurat";
                 font-size: 18px;
+
+                & + :global( h3 ) { margin-top: 18px;}
             }
         }
     }
