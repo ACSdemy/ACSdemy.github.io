@@ -1,30 +1,30 @@
 <div id="chapter-menu-wrapper"><slot /></div>
 
-<style lang="scss" is:global>
+<style lang="scss">
 
     #chapter-menu-wrapper {
 
-        h3 {
+        :global( h3 ) {
             color: var(--yellow-heading-color);
             font-family: "Harmonia Sans";
             font-size: 28px;
             margin-bottom: 16px;
 
-            #topic-label { color: var(--red-heading-color) }
+            :global( #topic-label ) { color: var(--red-heading-color) }
         }
 
-        ol { list-style: none }
+        :global( ol ) { list-style: none }
 
-        ol ol {
+        :global( ol ol ) {
             display: grid;
             grid-template-columns: max-content auto;
             align-items: baseline;
         }
 
-        .topic { margin-bottom: 32px }
-        .chapter { display: contents }
+        :global( .topic ) { margin-bottom: 32px }
+        :global( .chapter ) { display: contents }
 
-        #chapter-index {
+        :global( #chapter-index ) {
             grid-column: 1;
 
             color: var(--heading-color);
@@ -33,7 +33,7 @@
             padding-right: 15px;
         }
 
-        #chapter-title {
+        :global( #chapter-title ) {
             grid-column: 2;
 
             color: var(--heading-color);

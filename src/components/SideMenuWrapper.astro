@@ -1,34 +1,33 @@
 <div id="side-menu-wrapper"><slot /></div>
 
-<style lang="scss" is:global>
+<style lang="scss">
 
     #side-menu-wrapper {
-
         width: max-content;
         max-width: 420px;
 
-        ol { list-style: none }
+        :global( ol ) { list-style: none }
 
-        ol ol {
+        :global( ol ol ) {
             display: grid;
             grid-template-columns: max-content auto;
             align-items: baseline;
         }
 
-        .topic { margin-bottom: 15px }
-        .chapter { display: contents }
-        .chapter > * { color: var(--heading-color) }
-        .chapter:hover > * { color: var(--yellow-heading-color) }
+        :global( .topic ) { margin-bottom: 15px }
+        :global( .chapter ) { display: contents }
+        :global( .chapter > * ) { color: var(--heading-color) }
+        :global( .chapter:hover > * ) { color: var(--yellow-heading-color) }
 
 
-        h3 {
+        :global( h3 ) {
             color: var(--heading-color);
             font-family: "Harmonia Sans";
             font-size: 18px;
             margin-bottom: 3px;
         }
 
-        #chapter-index {
+        :global( #chapter-index ) {
             grid-column: 1;
 
             font-family: "Akkurat Mono";
@@ -36,7 +35,7 @@
             padding-right: 12px;
         }
 
-        #chapter-title {
+        :global( #chapter-title ) {
             grid-column: 2;
 
             font-family: "Akkurat";
