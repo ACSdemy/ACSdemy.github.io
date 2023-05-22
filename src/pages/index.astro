@@ -13,7 +13,9 @@ const curriculums = fs.readdirSync("src/content/academic");
 	<HeaderNavBar rightTabs={[{ slug: "/about", tag: "About" }, { slug: "/contribute", tag: "Contribute" }]} />
 	
 	<SinglePane>
-		<ContentWrapper><h1>ACSDEMY</h1></ContentWrapper>
+		<ContentWrapper><article>
+			<h1>ACSDEMY</h1>
+		</article></ContentWrapper>
 		
 		<ul>
 		{curriculums.map(curriculum => (

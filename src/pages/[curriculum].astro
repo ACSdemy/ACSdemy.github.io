@@ -3,7 +3,7 @@ import Boilerplate from "../layouts/Boilerplate.astro";
 import SinglePane from "../layouts/SinglePane.astro";
 import HeaderNavBar from "../components/HeaderNavBar.astro";
 import ContentWrapper from "../components/ContentWrapper.astro";
-import fs from "node:fs";
+import fs from "fs";
 
 
 export function getStaticPaths() {
@@ -32,7 +32,9 @@ const { curriculum, subjects } = Astro.props;
   <HeaderNavBar leftTags={[ curriculum ]} />
 
   <SinglePane>
-    <ContentWrapper><h1>{curriculum}</h1></ContentWrapper>
+    <ContentWrapper><article>
+      <h1>{curriculum}</h1>
+    </article></ContentWrapper>
 
     <ul>
     {subjects.map(subject => (

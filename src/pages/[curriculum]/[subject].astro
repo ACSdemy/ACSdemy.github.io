@@ -5,7 +5,7 @@ import HeaderNavBar from "../../components/HeaderNavBar.astro";
 import ContentWrapper from "../../components/ContentWrapper.astro";
 import ChapterMenu from "../../components/ChapterMenu.astro";
 import ChapterMenuWrapper from "../../components/ChapterMenuWrapper.astro"
-import fs from "node:fs";
+import fs from "fs";
 
 
 export function getStaticPaths() {
@@ -37,9 +37,9 @@ const { curriculum, subject } = Astro.props;
 
     <SinglePane>
 
-        <ContentWrapper>
+        <ContentWrapper><article>
             <h1>{subject}</h1>
-        </ContentWrapper>
+        </article></ContentWrapper>
 
         <ChapterMenuWrapper>
             <ChapterMenu curriculum={curriculum} subject={subject} />
