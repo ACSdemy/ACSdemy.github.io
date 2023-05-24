@@ -1,8 +1,8 @@
-<div id="content-wrapper"><slot/></div>
+<article id="content-wrapper"><slot/></article>
 
 <style lang="scss">
 
-    #content-wrapper > :global( article ) {
+    #content-wrapper, :global( article ) {
         
         & > :global( h1 ) {
             color: var(--heading-color);
@@ -32,8 +32,8 @@
         }
 
 
-        & > :global( .card ) {
-            padding: 12px 24px 18px;
+        :global( .card ) {
+            padding: 12px 24px 20px;
             margin-top: 18px;
             border-left-width: 6px;
             border-left-style: solid;

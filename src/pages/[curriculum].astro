@@ -32,9 +32,9 @@ const { curriculum, subjects } = Astro.props;
   <HeaderNavBar leftTags={[ curriculum ]} />
 
   <SinglePane>
-    <ContentWrapper><article>
+    <ContentWrapper>
       <h1>{curriculum}</h1>
-    </article></ContentWrapper>
+    </ContentWrapper>
 
     <ul>
     {subjects.map(subject => (
