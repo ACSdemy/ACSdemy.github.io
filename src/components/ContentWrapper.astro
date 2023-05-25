@@ -3,24 +3,31 @@
 <style lang="scss">
 
     #content-wrapper, :global( article ) {
-        
-        & > :global( h1 ) {
+
+        & > :global( h1, h2, h3 ) {
             color: var(--heading-color);
             font-family: "Harmonia Sans";
+        }
+        
+        & > :global( h1 ) {
             font-size: 56px;
             margin-top: -10px;
             margin-bottom: 42px;
         }
 
         & > :global( h2 ) {
-            color: var(--heading-color);
-            font-family: "Harmonia Sans";
             font-size: 34px;
             margin-top: 48px;
             margin-bottom: 18px;
         }
 
         & > :global( h1 + h2 ) { margin-top: 42px }
+
+        & > :global( h3 ) {
+            font-size: 26px;
+            margin-top: 32px;
+            margin-bottom: 18px; 
+        }
 
         & > :global( p ) {
             color: var(--text-color);
