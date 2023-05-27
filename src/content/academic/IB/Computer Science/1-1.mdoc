@@ -1,0 +1,236 @@
+---
+topic: 1
+chapter: 1
+title: "Systems in organizations"
+---
+
+# Systems in organizations
+
+## Planning and system installation
+
+### Difficulties
+
+Users don't like change.
+Some features may be omitted.
+Old systems may be faster.
+Incompatibility with other systems.
+Data loss.
+Expensive and costly, especially if the software is not off the shelf.
+
+### Changeovers
+
+Direct Changeover: old system is stopped, then new one is immediately started.
+Pros: changeover swift, new system immediately available.
+Cons: no backup in case of failure.
+
+Parallel: old and new system run concurrently (new data managed by both).
+Pros: backup if new system fails, output from both system can be compared to verify that the new system works correctly.
+Cons: running both systems is expensive.
+
+Pilot: new system tested with small part of organization for debugging, once bugs are fixed, system can be expanded.
+Pros: all features tested before adoption by whole organization, staff who are part of pilot can train others, if failure; only small part suffers.
+Cons: No backup for pilot group in case of failure.
+
+Phased: introduced in phases, old system gradually phased out.
+Pros: allows people to get used to new system, training can be done in stages.
+Cons: if system fails, no backup for that part of the system.
+
+### Data migration
+
+{% definition %}
+### Data migration
+Data migration is the process of moving data from one system to another.
+{% /definition %}
+
+It can be a huge process depending on the size of the systems.
+It is a necessary step when transitioning to a new system.
+
+### Challenges of data migration
+
+Incompatible file formats:
+different systems might use different versions of the same software (different file formats);
+data simply stored in different file formats because of different software.
+
+Data structure differences:
+differences in how data is structured and stored
+\(ex:data stored in arrays in one system and linked lists in the other).
+
+Validation rules:
+different rules for what consistitutes valid data;
+one system may be much less strict than the other,
+making data unacceptable for migration.
+
+Incomplete data transfers:
+the data transfer process is interrupted for some reason;
+transfer is only partial;
+data loss during process.
+
+Different conventions:
+(ex; dates in different order in USA; different currencies; different languages hence different characters).
+
+### Legacy systems
+
+Legacy systems are old technologies, computer systems or software.
+They are no longer supported or available for purchase.
+Modernization may be expensive or time-consuming.
+
+{% example %}
+### Examples
+Floppy disks, Windows XP/Vista
+{% /example %}
+
+### Local vs remote software
+
+Local: runs on your computer, data is stored locally.
+Remote: Accessed through a web browser, data is stored on the cloud.
+
+{% definition %}
+### SAAS
+Software as a service
+{% /definition %}
+
+### SAAS benefits and drawbacks
+
+Pros: cost savings, employee mobility, scalability, fewer support staff, pay as you go, easier maintenance.
+
+Cons: geographical location, availability, security, provider gets acquired, compliance, data corruption/recovery.
+
+### Testing
+
+Static testing:
+examines documentation, planned specifications, test plans, etc;
+makes sure that such documents will lead to the correct system being built;
+verification.
+
+Dynamic testing:
+while software is running;
+makes sure code produces required result;
+check for bugs;
+software meets business requirements;
+validation.
+
+Alpha testing:
+test each user journey and confirm they work as intended;
+internal team;
+typically lasts months, but teams can use intelligent automation to speed this up;
+rigorously structures, all results recorded and analyzed;
+address & fix bugs, correct any minor issues.
+
+Beta testing:
+test how the software performs in real-world scenarios;
+end-users;
+generally a few weeks long;
+completely unstructured;
+fix blocking bugs and make decisions following A/B tests,
+users provide feedback and results to the product team for incorporation in the next version.
+
+Dry run testing:
+tabletop testing;
+testing data manually with a trace table.
+
+Automated testing:
+uses automated testing software;
+tests preconstructed;
+program output automatically compared to expected output;
+rapidly complete complex/tedious tests.
+
+Black box testing:
+functional testing techniques;
+the internal structure/design/implementation of the application is not known to the tester;
+mainly applicable to higher levels of testing (acceptance or system testing).
+
+User acceptance testing:
+end-user testing;
+software tested on intended audience;
+checks whether product is right for end-users;
+
+## User focus
+
+### User documentation
+
+User documentation is an essential guide that allow the user to be aware of all software features and how to utilize them.
+
+{% example %}
+### Examples
+Manuals (hard-copy, instruction booklet or pamphlet)
+
+Online (PDFs, website, video)
+
+Help files
+{% /example %}
+
+### User training
+
+Users may need to be trained before using your product.
+This can be done through in-person classes, online, or self-instruction (using provided resources).
+
+### Data loss
+
+Causes of data loss:
+hardware/system malfunction, software corruption,
+human error, malicious software,
+natural disasters, power cuts (blackouts), equipment damage.
+
+Preventing data loss:
+failover systems, redundancy, removable media, offsite/online storage, physical security.
+
+### Social and ethical issues in software design
+
+Reliability: does the program function as intended?
+
+Jobs: will a software solution eliminate human jobs?
+
+Security: is the data in the program secure?
+
+Privacy: responsibilty to not share user data without permission.
+
+### Stakeholders
+
+Individuals or organizations with an interest or concern in the software 
+
+{% example %}
+### Examples
+Owner, user, manager, shareholder, employee
+{% /example %}
+
+Methods for getting requirements from stakeholders:
+direct observation (observe the system in real-world scenarios but users may act differently under observation),
+interviews (ask users directly for feedback, costly in time & resources),
+surveys (cheap & time-efficient, hard to think of good question, users may not take it seriously),
+prototypes.
+
+{% definition %}
+### Requirements
+Tasks a program should be able to achieve
+
+### Prototype
+A plan or abstract representation of the end-product, that is usually incomplete.
+Prototypes focus on displaying the functionality of a few key aspects,
+to allow stakeholders to get an idea of what the end-product will be like and give feedback.
+{% /definition %}
+
+### Iteration
+
+Cyclical process that ends in a finished product.
+Process of prototyping, testing, analyzing test results and refining the product until requirements are met.
+This allows constant improvement based on user or client feedback.
+
+## Software deployment
+
+Release: process of launching a new product.
+
+Update: software file that fixes a problem found after release.
+
+Patch: temporary fix between full releases.
+
+### Usability
+
+The extent of the effectiveness and efficiency at which a product can be used.
+It involves concepts such as:
+intuitive navigation, familiarity, consistency,
+error prevention, feedback, visual clarity and flexibility
+
+### Accessibility
+
+How easily can individuals, especially those with uncommon challenges use software.
+
