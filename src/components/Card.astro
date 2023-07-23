@@ -1,0 +1,70 @@
+---
+const { type } = Astro.props;
+---
+
+<div class={ "card " + type }><slot /></div>
+
+<style lang="scss">
+
+    .card {
+        padding: 12px 24px 20px;
+        margin-top: 18px;
+        border-left-width: 6px;
+        border-left-style: solid;
+        border-radius: 6px;
+
+        & > :global( h3 ) {
+            font-family: "Harmonia Sans";
+            font-size: 18px;
+        }
+
+        & > :global( p ) {
+            margin-top: 4px;
+            font-family: "Akkurat";
+            font-size: 18px;
+
+            & + :global( h3 ) { margin-top: 18px;}
+        }
+    }
+
+    .caution {
+        background-color: var(--red-background-color);
+        border-color: var(--red-heading-color);
+
+        & > :global( h3 ) { color: var(--red-heading-color) }
+        & > :global( p ) { color: var(--red-text-color) }
+    }
+
+    .definition {
+        background-color: var(--green-background-color);
+        border-color: var(--green-heading-color);
+
+        & > :global( h3 ) { color: var(--green-heading-color) }
+        & > :global( p ) { color: var(--green-text-color) }
+    }
+
+    .example {
+        background-color: var(--purple-background-color);
+        border-color: var(--purple-heading-color);
+
+        & > :global( h3 ) { color: var(--purple-heading-color) }
+        & > :global( p ) { color: var(--purple-text-color) }
+    }
+
+    .note {
+        background-color: var(--yellow-background-color);
+        border-color: var(--yellow-heading-color);
+
+        & > :global( h3 ) { color: var(--yellow-heading-color) }
+        & > :global( p ) { color: var(--yellow-text-color) }
+    }
+
+    .tip {
+        background-color: var(--blue-background-color);
+        border-color: var(--blue-heading-color);
+
+        & > :global( h3 ) { color: var(--blue-heading-color) }
+        & > :global( p ) { color: var(--blue-text-color) }
+    }
+
+</style>

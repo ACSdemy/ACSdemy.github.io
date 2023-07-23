@@ -2,62 +2,40 @@
 
 <style lang="scss">
 
-    #content-wrapper, :global( article ) {
+    #content-wrapper > {
 
-        & > :global( h1, h2, h3 ) {
+        :global( h1, h2, h3 ) {
             color: var(--heading-color);
             font-family: "Harmonia Sans";
         }
         
-        & > :global( h1 ) {
+        :global( h1 ) {
             font-size: 56px;
             margin-top: -10px;
             margin-bottom: 42px;
         }
 
-        & > :global( h2 ) {
+        :global( h2 ) {
             font-size: 34px;
             margin-top: 48px;
             margin-bottom: 18px;
         }
 
-        & > :global( h1 + h2 ) { margin-top: 42px }
+        :global( h1 + h2 ) { margin-top: 42px }
 
-        & > :global( h3 ) {
+        :global( h3 ) {
             font-size: 26px;
             margin-top: 32px;
             margin-bottom: 18px; 
         }
 
-        & > :global( p ) {
+        :global( p ) {
             color: var(--text-color);
             font-family: "Akkurat";
             font-size: 18px;
             margin-top: 1em;
 
             a { color: var(--highlight-color) }
-        }
-
-
-        :global( .card ) {
-            padding: 12px 24px 20px;
-            margin-top: 18px;
-            border-left-width: 6px;
-            border-left-style: solid;
-            border-radius: 6px;
-
-            & > :global( h3 ) {
-                font-family: "Harmonia Sans";
-                font-size: 18px;
-            }
-
-            & > :global( p ) {
-                margin-top: 4px;
-                font-family: "Akkurat";
-                font-size: 18px;
-
-                & + :global( h3 ) { margin-top: 18px;}
-            }
         }
     }
 
