@@ -5,5 +5,5 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   site: 'https://ACSdemy.github.io',
 //  base: '/ACSdemy',
-//  integrations: [mdx()]
+  integrations: [mdx()]
 });
