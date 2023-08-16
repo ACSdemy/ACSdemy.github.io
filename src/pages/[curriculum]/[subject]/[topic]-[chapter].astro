@@ -53,7 +53,7 @@ const { Content, components } = await chapter.render();
     <DualPane>
 
         <SideMenuWrapper slot="aside">
-            <ChapterMenu curriculum={curriculum} subject={subject} />
+            <ChapterMenu slugPrefix={"../"} curriculum={curriculum} subject={subject} />
         </SideMenuWrapper>
 
         <ContentWrapper slot="main">

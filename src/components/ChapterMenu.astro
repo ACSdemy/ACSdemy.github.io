@@ -64,7 +64,7 @@ menu.sort((a, b) => {
             <ol>{topic.chapters.map(chapter => (
                 <li class="chapter">
                     <p id="chapter-index">{chapter.label}</p>
-                    <a id="chapter-title" href={`${slugPrefix || ""}${chapter.slug}`}>{chapter.title}</a>
+                    <a id="chapter-title" href={`${slugPrefix || ""}${chapter.slug}/`}>{chapter.title}</a>
                 </li>
             ))}</ol>
         </li>
