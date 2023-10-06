@@ -11,16 +11,78 @@ const curriculums = fs.readdirSync("src/content/academic");
 
 <Boilerplate title="Home">
 	<HeaderNavBar rightTabs={[{ slug: "/about", tag: "About" }, { slug: "/contribute", tag: "Contribute" }]} />
-	
-	<SinglePane>
-		<ContentWrapper>
-			<h1>ACSDEMY</h1>
-		</ContentWrapper>
-		
-		<ul>
-		{curriculums.map(curriculum => (
-			<li><a href={`${curriculum.toLowerCase().replace(" ", "-")}/`}>{curriculum}</a></li>
-		))}
-		</ul>
-	</SinglePane>
+	<div id="index-wrapper">
+		<div id="content-wrapper">
+			<h1>Welcome to ACSdemy!</h1>
+			<p>The unofficial repository of study notes from ACS Jakarta. Study at your own risk with our available resources down below:</p>
+
+			<div id="link-wrapper">
+				<a href="/igcse/">IGCSE Resources</a>
+				<a href="/ib/">IB Resources</a>
+			</div>
+		</div>
+	<div>
 </Boilerplate>
+
+<style>
+
+    #index-wrapper {
+        width: 100vw;
+		height: calc(100vh - 51px);
+        padding: auto auto;
+        background-color: var(--highlight-color);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+    }
+
+	#content-wrapper {
+		height: fit-content;
+		max-width: 60vw;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: none;
+	}
+
+	h1 {
+		color: var(--primary-background-color);
+        font-family: "Harmonia Sans";
+		font-size: 80px;
+		margin-top: -10px;
+		margin-bottom: 42px;
+
+		text-decoration-line: underline;
+		text-decoration-color: #fc4235;
+		text-decoration-thickness: 10px;
+	}
+
+	p {
+		color: var(--secondary-background-color);
+		font-family: "Akkurat";
+		font-size: 32px;
+		text-align: center;
+	}
+    
+	#link-wrapper {
+		margin-top: 42px;
+		display: flex;
+		flex-direction: row;
+	}
+
+	a {
+		background-color: var(--primary-background-color);
+		color: var(--heading-color);
+		font-family: "Harmonia Sans";
+		font-size: 30px;
+		padding: 20px 40px;
+		margin: 0 16px;
+		border-radius: 50cqh;
+	}
+
+	a:hover {
+		background-color: white;
+		color: var(--secondary_background-color);
+	}
+
+</style>
