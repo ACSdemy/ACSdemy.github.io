@@ -11,6 +11,8 @@
 
 <style>
 
+    body { background-color: var(--primary-background-color) }
+
     #tinfoil-hat {
         width: 100vw;
         min-height: calc(100vh - 51px);
@@ -26,11 +28,15 @@
         flex-direction: row;
     }
 
-    aside, main { --padding-value: 48px; }
+    aside, main {
+        --padding-value: 60px;
+        overflow-y: scroll;
+    }
 
     aside {
-        width: min-content;
+        max-width: 24ch;
         padding: var(--padding-value);
+        background-color: var(--secondary-background-color);
     }
 
     main {

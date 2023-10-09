@@ -1,21 +1,22 @@
 ---
-const { slugPrefix, leftTags, rightTabs } = Astro.props;
+const { color = "light", slugPrefix, leftTags, rightTabs } = Astro.props;
 
 let left = [];
 if (leftTags != null && leftTags.length > 0) {
 
     if (slugPrefix == null) {
         for (let i = 0; i < leftTags.length - 1; i++) left.push({ slug: ("../".repeat(leftTags.length-1-i)), tag: leftTags[i] });
-        left.push({ slug: "./", tag: leftTags[leftTags.length-1] });
-        
+        left.push({ slug: "./", tag: leftTags[leftTags.length-1] });   
     } else {
         for (let i = 0; i < leftTags.length - 1; i++) left.push({ slug: (slugPrefix + "../".repeat(leftTags.length-1-i)), tag: leftTags[i] });
         left.push({ slug: slugPrefix, tag: leftTags[leftTags.length-1] });
     }
-} 
+}
+
+// header height is 60px
 ---
 
-<header>
+<header id={color}>
     <div id="left"><a href="/">Home</a>{left.map(tab => (
         <p>{">"}</p><a href={tab.slug}>{tab.tag}</a>
     ))}</div>
@@ -24,42 +25,39 @@ if (leftTags != null && leftTags.length > 0) {
         <a href={`${tab.slug}/`}>{tab.tag}</a>
     ))}</div>}
 </header>
-<div id="spacer" />
 
 <style>
-
-    #spacer {
-        height: 51px;
-    }
 
     header {
         width: 100vw;
         height: fit-content;
+        padding: 15px 0 20px;
         position: fixed;
         display: flex;
+        justify-content: space-between;
     }
 
+    #left, #right { display: flex }
+
     #left {
-        padding: 12px 20px 14px;
-        margin-right: auto;
-        display: flex;
+        margin-left: 40px;
+        gap: 20px;
     }
 
     #right {
-        padding: 12px 20px 14px;
-        margin-left: auto;
-
-        display: flex;
-        flex-direction: row;
+        margin-right: 40px;
+        gap: 40px;
         align-items: end;
     }
 
     p, a {
         font-family: "Akkurat";
         font-size: 20px;
-        color: var(--secondary-background-color);
+        color: inherit;
     }
 
-    a { padding: 0 20px }
+    #light { color: var(--heading-color) }
+    #dark { color: var(--secondary-background-color) }
+    #yellow { color: var(--highlight-color) }
 
 </style>
