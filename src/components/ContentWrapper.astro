@@ -29,7 +29,16 @@
             margin-bottom: 18px; 
         }
 
-        :global( p, li ) {
+        :global( p ) {
+            color: var(--text-color);
+            font-family: "Akkurat";
+            font-size: 18px;
+            margin-top: 1em;
+
+            a { color: var(--highlight-color) }
+        }
+
+        :global( li ) {
             color: var(--text-color);
             font-family: "Akkurat";
             font-size: 18px;
