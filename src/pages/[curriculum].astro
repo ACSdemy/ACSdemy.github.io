@@ -34,13 +34,13 @@ const { curriculum, subjects } = Astro.props;
   <SinglePane>
     <ContentWrapper>
       <h1>{curriculum} Subjects</h1>
-    </ContentWrapper>
 
-    <ul>
-    {subjects.map(subject => (
-      <li><a href={subject.slug}>{subject.title}</a></li>
-    ))}
-    </ul>
+      <ul>
+        {subjects.map(subject => (
+          <li><a href={subject.slug}>{subject.title}</a></li>
+        ))}
+      </ul>
+  </ContentWrapper>
   </SinglePane>
 </Boilerplate>
 
