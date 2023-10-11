@@ -1,6 +1,5 @@
 ---
 import Boilerplate from "../../layouts/Boilerplate.astro";
-import SinglePane from "../../layouts/SinglePane.astro";
 import HeaderNavBar from "../../components/HeaderNavBar.astro";
 import ContentWrapper from "../../components/ContentWrapper.astro";
 import ChapterMenu from "../../components/ChapterMenu.astro";
@@ -33,23 +32,25 @@ const { curriculum, subject } = Astro.props;
 ---
 
 <Boilerplate title={subject}>
-    <HeaderNavBar leftTags={[ curriculum, subject ]} />
+    <body>
+        <HeaderNavBar leftTags={[ curriculum, subject ]} />
 
-    <SinglePane>
+        <main>
+            <ContentWrapper>
+                <h1>{subject}</h1>
+            </ContentWrapper>
 
-        <ContentWrapper>
-            <h1>{subject}</h1>
-        </ContentWrapper>
-
-        <ChapterMenuWrapper>
-            <ChapterMenu curriculum={curriculum} subject={subject} />
-        </ChapterMenuWrapper>
-
-    </SinglePane>
+            <ChapterMenuWrapper>
+                <ChapterMenu curriculum={curriculum} subject={subject} />
+            </ChapterMenuWrapper>
+        </main>
+    </body>
 </Boilerplate>
 
 <style>
 
     body { background-color: var(--primary-background-color) }
   
-  </style>
+    main { margin: 0 50px 50px }
+
+</style>

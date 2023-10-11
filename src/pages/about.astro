@@ -6,35 +6,37 @@ import ContentWrapper from "../components/ContentWrapper.astro";
 ---
 
 <Boilerplate title="About">
-	<HeaderNavBar rightTabs={[{ slug: "/about", tag: "About" }, { slug: "/contribute", tag: "Contribute" }]} />
+    <body>
+        <HeaderNavBar rightTabs={[{ slug: "/about", tag: "About" }, { slug: "/contribute", tag: "Contribute" }]} />
 
-    <SinglePane>
-        <ContentWrapper>
-            <h1>About</h1>
-            <p>
-                ACSdemy is a website created by a team of four grade 11 students as a CAS Project.
-                It is essentially a virtual repository of study notes made by ACS students for ACS students.
-                This project was made for several reasons:<br><br>
+        <SinglePane>
+            <ContentWrapper>
+                <h1>About</h1>
+                <p>
+                    ACSdemy is a website created by a team of four grade 11 students as a CAS Project.
+                    It is essentially a virtual repository of study notes made by ACS students for ACS students.
+                    This project was made for several reasons:<br><br>
 
-                1.  We really needed a CAS Project.<br>
+                    1.  We really needed a CAS Project.<br>
 
-                2.  While there are many notes available online, often its very hard to find some in the same place just due to the sheer volume of information.
-                    Furthermore, sometimes it’s just hard to figure out whats relevant and whats not relevant for your specific needs,
-                    especially when you’re dealing with the pressure of the exam where you cannot be wasting that much time looking for information.<br>
+                    2.  While there are many notes available online, often its very hard to find some in the same place just due to the sheer volume of information.
+                        Furthermore, sometimes it’s just hard to figure out whats relevant and whats not relevant for your specific needs,
+                        especially when you’re dealing with the pressure of the exam where you cannot be wasting that much time looking for information.<br>
 
-                3.	While the SRC has made a similar website in the past, it can be said that it isn't exactly kept up to date.
-                    All the subject specific links there are dead and the websites themselves are already well-known; hence it doesn't provide that much addiditonal help.
-                    This website seeks to improve upon that with better content and a sleeker interface.<br><br>
- 
-                The one major benefit this website provides is its use of an automated layout creator.
-                This is very helpful for ACSdemy considering how much major curriculums love changing the contents they teach every few years,
-                and will allow future ACS students to make modifications to the website without modifying the layout,
-                making it easier for future edits to come.<br><br>
+                    3.	While the SRC has made a similar website in the past, it can be said that it isn't exactly kept up to date.
+                        All the subject specific links there are dead and the websites themselves are already well-known; hence it doesn't provide that much addiditonal help.
+                        This website seeks to improve upon that with better content and a sleeker interface.<br><br>
 
-                We hope you find this website very useful in your studying endeavours!<br><br><br>
+                    The one major benefit this website provides is its use of an automated layout creator.
+                    This is very helpful for ACSdemy considering how much major curriculums love changing the contents they teach every few years,
+                    and will allow future ACS students to make modifications to the website without modifying the layout,
+                    making it easier for future edits to come.<br><br>
 
-                - Victor, Ryan, Bennet, Jared
-            </p>
-        </ContentWrapper>
-    </SinglePane>
+                    We hope you find this website very useful in your studying endeavours!<br><br><br>
+
+                    - Victor, Ryan, Bennet, Jared
+                </p>
+            </ContentWrapper>
+        </SinglePane>
+    </body>
 </Boilerplate>

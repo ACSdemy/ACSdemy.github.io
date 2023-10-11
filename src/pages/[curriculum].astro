@@ -1,51 +1,154 @@
 ---
 import Boilerplate from "../layouts/Boilerplate.astro";
-import SinglePane from "../layouts/SinglePane.astro";
 import HeaderNavBar from "../components/HeaderNavBar.astro";
-import ContentWrapper from "../components/ContentWrapper.astro";
 import fs from "fs";
 
 
 export function getStaticPaths() {
-  let paths = [];
-  const curriculums = fs.readdirSync("src/content/academic");
+	let paths = [];
+	const curriculums = fs.readdirSync("src/content/academic");
+	const languagesRegex = /(language|literature|english|french|indonesian|chinese|korean)/i;
+	const humanitiesRegex = /(history|geography|business|management|economics|psychology|art|music)/i;
+	const sciencesRegex = /(science|math|physics|chemistry|biology|computer|engineering|technology|environment|ess|sports|pe)/i;
 
-  for (let i = 0; i < curriculums.length; i++) {
-    const subjects = fs.readdirSync(`src/content/academic/${curriculums[i]}`);
-    const curriculum = curriculums[i].toLowerCase().replace(" ", "-");
+	for (let i = 0; i < curriculums.length; i++) {
+		const curriculum = curriculums[i].toLowerCase().replace(" ", "-");
+		const subjects = fs
+			.readdirSync(`src/content/academic/${curriculums[i]}`)
+			.map(subject => ({ slug: `${subject.toLowerCase().replace(" ", "-")}/`, title: subject }));
+	
+		const languages = [];
+		const humanities = [];
+		const sciences = [];
 
-    paths.push({
-      params: { curriculum: curriculum },
-      props: {
-        curriculum: curriculums[i],
-        subjects: subjects.map(subject => ({ slug: `${subject.toLowerCase().replace(" ", "-")}/`, title: subject }))
-      }});
-  }
+		subjects.forEach(subject => {
+			if (languagesRegex.test(subject.slug)) {
+				languages.push(subject);
+			} else if (humanitiesRegex.test(subject.slug)) {
+				humanities.push(subject);
+			} else if (sciencesRegex.test(subject.slug)) {
+				sciences.push(subject);
+			}
+		});
 
-  return paths;
+		paths.push({
+			params: { curriculum: curriculum },
+			props: {
+				curriculum: curriculums[i],
+				languages: languages,
+				humanities: humanities,
+				sciences: sciences,
+		}});
+  	}
+
+  	return paths;
 }
 
-const { curriculum, subjects } = Astro.props;
+const { curriculum, languages, humanities, sciences } = Astro.props;
 ---
 
 <Boilerplate title={curriculum}>
-  <HeaderNavBar leftTags={[ curriculum ]} />
+	<body>
+		<HeaderNavBar leftTags={[ curriculum ]} />
 
-  <SinglePane>
-    <ContentWrapper>
-      <h1>{curriculum} Subjects</h1>
-    </ContentWrapper>
+		<main>
+			<h1>{curriculum} Subjects</h1>
 
-    <ul>
-    {subjects.map(subject => (
-      <li><a href={subject.slug}>{subject.title}</a></li>
-    ))}
-    </ul>
-  </SinglePane>
+			<div id="category-wrapper">
+
+				{(languages != null) && (languages.length > 0) && <div id="language" class="category"><h2>LANGUAGE</h2><div class="subject-wrapper">
+					{languages.map(subject => (
+						<a href={subject.slug}>{subject.title}</a>
+					))}
+				</div></div>}
+
+				{(humanities != null) && (humanities.length > 0) && <div id="humanities" class="category"><h2>HUMANITIES</h2><div class="subject-wrapper">
+					{humanities.map(subject => (
+						<a href={subject.slug}>{subject.title}</a>
+					))}
+				</div></div>}
+
+				{(sciences != null) && (sciences.length > 0) && <div id="science" class="category"><h2>SCIENCES</h2><div class="subject-wrapper">
+					{sciences.map(subject => (
+						<a href={subject.slug}>{subject.title}</a>
+					))}
+				</div></div>}
+
+			</div>
+		</main>
+	<body>
 </Boilerplate>
 
 <style>
 
-  body { background-color: var(--primary-background-color) }
+  	body {
+		background-color: var(--primary-background-color);
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	main {
+        margin: 0 50px 50px;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+    }
+
+	#category-wrapper {
+		margin-top: 42px;
+		display: flex;
+		flex: 1;
+	}
+
+	.category {
+		padding: 18px 18px 36px 10px;
+		display: flex;
+		flex: 1;
+	}
+
+	.subject-wrapper {
+		height: min-content;
+		margin-left: 18px;
+		display: flex;
+		flex-flow: wrap;
+		gap: 18px;
+	}
+
+	a {
+		color: var(--heading-color);
+		font-family: "Akkurat";
+		font-size: 20px;
+		text-align: center;
+		padding: 16px 32px 18px;
+		border: solid 2px var(--heading-color);
+		border-radius: 50cqh;
+	}
+
+	a:hover {
+		color: var(--secondary-background-color);
+		border-color: var(--secondary-background-color);
+	}
+
+	#language { background-color: var(--red-background-color) }
+	#humanities { background-color: var(--yellow-background-color) }
+	#science { background-color: var(--blue-background-color) }
+
+	#language a:hover { background-color: var(--red-heading-color) }
+	#humanities a:hover { background-color: var(--yellow-heading-color) }
+	#science a:hover { background-color: var(--blue-heading-color) }
+
+  	h1, h2 {
+    	font-family: "Harmonia sans";
+    	color: var(--heading-color);
+  	}
+
+  	h1 { font-size: 56px }
+
+	h2 {
+		font-size: 34px;
+		text-align: right;
+		writing-mode: sideways-lr;
+	}
 
 </style>
