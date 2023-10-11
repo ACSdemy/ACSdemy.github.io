@@ -12,18 +12,27 @@ const { type } = Astro.props;
         border-left-width: 6px;
         border-left-style: solid;
         border-radius: 6px;
+    }
 
-        & > :global( h3 ) {
+    .card > {
+
+        :global( h3 ) {
             font-family: "Harmonia Sans";
             font-size: 18px;
         }
 
-        & > :global( p, li ) {
+        :global( p ) {
             margin-top: 4px;
             font-family: "Akkurat";
             font-size: 18px;
 
-            & + :global( h3 ) { margin-top: 18px;}
+            & + :global( h3 ) { margin-top: 18px }
+        }
+
+        :global( ul > li ) {
+            margin-top: 4px;
+            font-family: "Akkurat";
+            font-size: 18px;
         }
     }
 
@@ -32,7 +41,7 @@ const { type } = Astro.props;
         border-color: var(--red-heading-color);
         color: var(--red-text-color);
 
-        & > :global( h3 ) { color: var(--red-heading-color)}
+        & > :global( h3 ) { color: var(--red-heading-color) }
     }
 
     .definition {
@@ -40,7 +49,7 @@ const { type } = Astro.props;
         border-color: var(--green-heading-color);
         color: var(--green-text-color);
 
-        & > :global( h3 ) { color: var(--green-heading-color)}
+        & > :global( h3 ) { color: var(--green-heading-color) }
     }
 
     .example {
@@ -48,7 +57,7 @@ const { type } = Astro.props;
         border-color: var(--purple-heading-color);
         color: var(--purple-text-color);
 
-        & > :global( h3 ) { color: var(--purple-heading-color)}
+        & > :global( h3 ) { color: var(--purple-heading-color) }
     }
 
     .note {
@@ -56,7 +65,7 @@ const { type } = Astro.props;
         border-color: var(--yellow-heading-color);
         color: var(--yellow-text-color);
 
-        & > :global( h3 ) { color: var(--yellow-heading-color)}
+        & > :global( h3 ) { color: var(--yellow-heading-color) }
     }
 
     .tip {
@@ -64,7 +73,7 @@ const { type } = Astro.props;
         border-color: var(--blue-heading-color);
         color: var(--blue-text-color);
 
-        & > :global( h3 ) { color: var(--blue-heading-color)}
+        & > :global( h3 ) { color: var(--blue-heading-color) }
     }
 
 </style>
