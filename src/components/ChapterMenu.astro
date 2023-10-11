@@ -14,7 +14,7 @@ for (let i = 0; i < topics.length; i++) {
 
     let chapterList = [];
     const chapters = await getCollection("academic", ({ id, data }) => {
-        return id.startsWith(`${curriculum}/${subject}/`) && data.topic == topicData.topic && data.chapter > 0;
+        return id.startsWith(`${curriculum}/${subject}/`) && data.topic == topicData.topic && data.chapter != 0;
     });
 
     for (let j = 0; j < chapters.length; j++) {
@@ -22,17 +22,21 @@ for (let i = 0; i < topics.length; i++) {
 
         chapterList[chapterData.chapter - 1] = {
             slug: `${topicData.topic}-${chapterData.chapter}`,
-            label: `${topicData.topic}${typeof topicData.topic === "number" ? "." : "-"}${chapterData.chapter}`,
-            title: chapterData.title
+            label: `${topicData.topic}.${chapterData.chapter}`.toUpperCase(),
+            title: chapterData.title,
         };
     }
 
-    menu.push({
-        id: topicData.topic,
-        label: `${typeof topicData.topic === "number" && Number.isInteger(topicData.topic) ? "TOPIC" : "OPTION"} ${topicData.topic}`,
-        title: topicData.title,
-        chapters: chapterList
-    });
+    const verifiedChapterList = chapterList.filter(chapter => chapter !== '');
+    
+    if (verifiedChapterList.length > 0) {
+        menu.push({
+            id: topicData.topic,
+            label: `${typeof topicData.topic === "number" && Number.isInteger(topicData.topic) ? "topic" : "option"} ${topicData.topic}`.toUpperCase(),
+            title: topicData.title,
+            chapters: verifiedChapterList,
+        });
+    }
 }
 
 menu.sort((a, b) => {
