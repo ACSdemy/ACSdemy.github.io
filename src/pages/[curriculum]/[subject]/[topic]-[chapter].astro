@@ -48,16 +48,15 @@ const { Content, components } = await chapter.render();
 ---
 
 <Boilerplate title={subject}>
-    <body>
-        <DualPane>
-            <SideMenuWrapper slot="aside">
-                <HeaderNavBar color="yellow" slugPrefix={"../"} leftTags={[ curriculum, subject ]} />
-                <ChapterMenu slugPrefix={"../"} curriculum={curriculum} subject={subject} />
-            </SideMenuWrapper>
+    <DualPane>
+        <HeaderNavBar slot="aside" color="yellow" slugPrefix={"../"} leftTags={[ curriculum, subject ]} />
 
-            <ContentWrapper slot="main">
-                <Content components={{ ...components, Card }} />
-            </ContentWrapper>
-        </DualPane>
-    <body>
+        <SideMenuWrapper slot="aside">
+            <ChapterMenu slugPrefix={"../"} curriculum={curriculum} subject={subject} />
+        </SideMenuWrapper>
+
+        <ContentWrapper slot="main">
+            <Content components={{ ...components, Card }} />
+        </ContentWrapper>
+    </DualPane>
 </Boilerplate>

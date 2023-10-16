@@ -1,42 +1,29 @@
-<div id="tinfoil-hat">
+<body>
     <aside><slot name="aside" /></aside>
     <main><slot name="main" /></main>
-</div>
+</body>
 
 <style>
 
-    body { background-color: var(--primary-background-color) }
-
-    #tinfoil-hat {
-        width: 100vw;
-        min-height: calc(100vh - 51px);
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: stretch;
-    }
-
-    #left-spacer { background-color: var(--secondary-background-color) }
-
-    #center {
+    body {
+        background-color: var(--primary-background-color);
         display: flex;
-        flex-direction: row;
-    }
-
-    aside, main {
-        --padding-value: 60px;
-        overflow-y: scroll;
+        justify-content: stretch;
+        width: 100vw;
+        min-height: 100vh;
     }
 
     aside {
-        max-width: 24ch;
-        padding: var(--padding-value);
         background-color: var(--secondary-background-color);
+        display: flex;
+        flex-direction: column;
     }
 
     main {
-        width: 1080px;
-        padding: var(--padding-value) var(--padding-value) 0;
-        margin-bottom: 160px;
+        padding: 60px;
+        display: flex;
+        flex: 1;
+        
     }
 
 </style>

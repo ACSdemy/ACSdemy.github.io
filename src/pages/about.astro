@@ -9,7 +9,7 @@ import ContentWrapper from "../components/ContentWrapper.astro";
     <body>
         <HeaderNavBar rightTabs={[{ slug: "/about", tag: "About" }, { slug: "/contribute", tag: "Contribute" }]} />
 
-        <SinglePane>
+        <main>
             <ContentWrapper>
                 <h1>About</h1>
                 <p>
@@ -37,6 +37,14 @@ import ContentWrapper from "../components/ContentWrapper.astro";
                     - Victor, Ryan, Bennet, Jared
                 </p>
             </ContentWrapper>
-        </SinglePane>
+        </main>
     </body>
 </Boilerplate>
+
+<style>
+
+    body { background-color: var(--primary-background-color) }
+
+    main { margin: 0 60px 60px }
+
+</style>
